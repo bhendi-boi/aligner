@@ -11,13 +11,13 @@ interface apb_intf (
 );
 
     logic preset_n;
-    logic [`CFS_APB_MAX_ADDR_WIDTH-1:0] paddr;
+    logic [`APB_MAX_ADDR_WIDTH-1:0] paddr;
     logic pwrite;
     logic psel;
     logic penable;
-    logic [`CFS_APB_MAX_DATA_WIDTH-1:0] pwdata;
+    logic [`APB_MAX_DATA_WIDTH-1:0] pwdata;
     logic pready;
-    logic [`CFS_APB_MAX_DATA_WIDTH-1:0] prdata;
+    logic [`APB_MAX_DATA_WIDTH-1:0] prdata;
     logic pslverr;
 
 endinterface
