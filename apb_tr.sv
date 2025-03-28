@@ -14,9 +14,11 @@ class apb_transaction extends uvm_sequence_item;
 
 
     function string convert2string();
-        string msg = $sformat("Addr: %0x, Write/Read: %0s\n", addr, dir.name());
-        if (dir) msg = {msg, $sformat("Wdata: %0x", wdata)};
-        else msg = {msg, $sformat("Rdata: %0x", rdata)};
+        string msg = $sformatf(
+            "Addr: %0x, Write/Read: %0s\n", addr, dir.name()
+        );
+        if (dir) msg = {msg, $sformatf("Wdata: %0x", wdata)};
+        else msg = {msg, $sformatf("Rdata: %0x", rdata)};
         return msg;
     endfunction
 
