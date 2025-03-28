@@ -11,16 +11,20 @@ class apb_rw_seq extends uvm_sequence #(apb_transaction);
     task body();
         tr = apb_transaction::type_id::create("tr");
 
-        // TODO: Write constraints for addr
-        // write
         start_item(tr);
-        if (!tr.randomize() with {dir == 1;})
+        if (!tr.randomize() with {
+                dir == 1;
+                addr inside {32'h0, 32'hC, 32'hF0, 32'hF4};
+            })
             `uvm_fatal("APB_RW_Seq", "Randomisation failed")
         finish_item(tr);
 
         // read
         start_item(tr);
-        if (!tr.randomize() with {dir == 0;})
+        if (!tr.randomize() with {
+                dir == 0;
+                addr inside {32'h0, 32'hC, 32'hF0, 32'hF4};
+            })
             `uvm_fatal("APB_RW_Seq", "Randomisation failed")
         finish_item(tr);
     endtask
