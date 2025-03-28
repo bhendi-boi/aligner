@@ -12,7 +12,7 @@ module tb ();
         forever #10 clk = ~clk;
     end
 
-    abp_intf apb_if (.pclk(clk));
+    apb_intf apb_if (.pclk(clk));
 
     cfs_aligner dut (
         .clk    (clk),
@@ -30,7 +30,7 @@ module tb ();
     initial begin
         uvm_config_db#(virtual apb_intf)::set(null, "uvm_test_top*", "apb_if",
                                               apb_if);
-        run_test("apb_reg_access_test.sv");
+        run_test("apb_reg_access_test");
     end
 
     initial begin
