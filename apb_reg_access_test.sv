@@ -21,8 +21,8 @@ class apb_reg_access_test extends uvm_test;
         super.run_phase(phase);
         phase.raise_objection(this);
 
-        s0 = apb_rw_seq::type_id::create("apb_rw_seq");
-        s0.start(env.apb_agent.sequencer);
+        s0 = apb_rw_seq::type_id::create("s0");
+        s0.start(environment.apb_agent.sequencer);
 
         #100;
         phase.drop_objection(this);
