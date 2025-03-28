@@ -15,7 +15,10 @@ class apb_transaction extends uvm_sequence_item;
 
     function string convert2string();
         string msg = $sformatf(
-            "Addr: %0x, Write/Read: %0s\n", addr, dir.name()
+            "Slave Error: %0d \nAddr: %0x, Write/Read: %0s\n",
+            this.slverr,
+            this.addr,
+            this.dir.name()
         );
         if (dir) msg = {msg, $sformatf("Wdata: %0x", wdata)};
         else msg = {msg, $sformatf("Rdata: %0x", rdata)};
