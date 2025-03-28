@@ -1,5 +1,5 @@
 class apb_drv extends uvm_driver #(apb_transaction);
-    `uvm_component_utils(apv_drv)
+    `uvm_component_utils(apb_drv)
 
     virtual apb_intf vif;
     apb_transaction  tr;
