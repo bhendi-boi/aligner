@@ -2,7 +2,7 @@ class apb_agnt extends uvm_agent;
     `uvm_component_utils(apb_agnt)
 
     apb_drv  driver;
-    // mon monitor;
+    apb_mon  monitor;
     apb_seqr sequencer;
 
     function new(string name = "apb_agnt", uvm_component parent);
@@ -15,7 +15,7 @@ class apb_agnt extends uvm_agent;
         `uvm_info("APB_Agent", "Build phase APB Agent", UVM_HIGH)
         driver = apb_drv::type_id::create("driver", this);
         sequencer = new("sequencer", this);
-        // monitor = apb_mon::type_id::create("monitor", this);
+        monitor = apb_mon::type_id::create("monitor", this);
     endfunction
 
     function void connect_phase(uvm_phase phase);
