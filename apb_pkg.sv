@@ -1,7 +1,7 @@
 `include "uvm_macros.svh"
 `include "apb_intf.sv"
 
-package apb_driver_pkg;
+package apb_pkg;
 
     import uvm_pkg::*;
 
