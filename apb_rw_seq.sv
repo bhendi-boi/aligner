@@ -1,4 +1,4 @@
-class apb_rw_seq extends uvm_sequence #(transaction);
+class apb_rw_seq extends uvm_sequence #(apb_transaction);
     `uvm_object_utils(apb_rw_seq)
 
     apb_transaction tr;
