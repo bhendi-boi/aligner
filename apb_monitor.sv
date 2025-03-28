@@ -35,11 +35,10 @@ class apb_mon extends uvm_monitor;
     endtask
 
     task sample (apb_transaction tr);
-        @(posedge vif.pready);
-        tr.slverr = vif.pslverr;
         @(negedge vif.pready);
+        tr.slverr = vif.pslverr;
         tr.addr = vif.paddr;
-        tr.dir  = vif.pwrite ? APB_WRITE : APB_READ;
+        tr.dir = vif.pwrite ? APB_WRITE : APB_READ;
         if (!vif.pwrite) tr.rdata = vif.prdata;
     endtask
 
