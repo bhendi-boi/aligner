@@ -3,8 +3,8 @@ class apb_mon extends uvm_monitor;
 
 
     virtual apb_intf vif;
-    apb_transaction  tr;
-    // uvm_analysis_port #(apb_transaction) monitor_port;
+    apb_transaction tr;
+    uvm_analysis_port #(apb_transaction) monitor_port;
 
     function new(string name = "apb_mon", uvm_component parent);
         super.new(name, parent);
@@ -15,7 +15,7 @@ class apb_mon extends uvm_monitor;
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
         `uvm_info("APB_Monitor", "Build phase monitor", UVM_HIGH)
-        // monitor_port = new("monitor_port", this);
+        monitor_port = new("monitor_port", this);
         if (!(uvm_config_db#(virtual apb_intf)::get(
                 this, "", "apb_if", vif
             ))) begin
@@ -30,6 +30,7 @@ class apb_mon extends uvm_monitor;
 
         forever begin
             sample (tr);
+            monitor_port.write(tr);
             `uvm_info("APB_Monitor", tr.convert2string(), UVM_LOW)
         end
     endtask
