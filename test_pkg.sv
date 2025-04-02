@@ -1,5 +1,5 @@
 `include "uvm_macros.svh"
-`include "./apb_pkg.sv"
+`include "./apb/apb_pkg.sv"
 
 package test_pkg;
     import uvm_pkg::*;
